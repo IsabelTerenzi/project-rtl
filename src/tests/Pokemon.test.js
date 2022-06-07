@@ -2,12 +2,11 @@ import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouter from '../extra/renderWithRouter';
-import pokemons from '../data';
 import App from '../App';
 
 describe('Testa o componente Pokemon', () => {
   it('Testa se é renderizado um card com as informações do Pokémon', () => {
-    renderWithRouter(<App pokemons={ pokemons } />);
+    renderWithRouter(<App />);
     const pokemonName = screen.getByTestId('pokemon-name');
     const pokemonType = screen.getByTestId('pokemon-type');
     const pokemonWeight = screen.getByTestId('pokemon-weight');
@@ -36,7 +35,7 @@ describe('Testa o componente Pokemon', () => {
   });
 
   it('Testa se a URL exibida muda para /pokemon/<id>', () => {
-    const { history } = renderWithRouter(<App pokemons={ pokemons } />);
+    const { history } = renderWithRouter(<App />);
     const detailsLink = screen.getByText(/more details/i);
 
     userEvent.click(detailsLink);
